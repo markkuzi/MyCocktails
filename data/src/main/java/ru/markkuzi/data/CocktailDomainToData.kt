@@ -1,4 +1,4 @@
-package ru.markkuzi.domain
+package ru.markkuzi.data
 
 import ru.markkuzi.data.localDB.CocktailDbModel
 import ru.markkuzi.domain.entities.Cocktail

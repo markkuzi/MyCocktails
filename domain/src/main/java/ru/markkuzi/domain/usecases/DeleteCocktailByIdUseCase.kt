@@ -4,10 +4,10 @@ import ru.markkuzi.domain.CocktailsRepository
 
 interface DeleteCocktailByIdUseCase {
 
-    fun deleteCocktailById(cocktailId: Int)
+    suspend fun deleteCocktailById(cocktailId: Int)
 
     class Base(private val repository: CocktailsRepository) : DeleteCocktailByIdUseCase {
-        override fun deleteCocktailById(cocktailId: Int) {
+        override suspend fun deleteCocktailById(cocktailId: Int) {
             repository.deleteCocktailById(cocktailId)
         }
     }

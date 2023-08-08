@@ -5,10 +5,10 @@ import ru.markkuzi.domain.entities.Cocktail
 
 interface GetCocktailsUseCase {
 
-    fun getCocktails(): List<Cocktail>
+    suspend fun getCocktails(): List<Cocktail>
 
     class Base(private val repository: CocktailsRepository) : GetCocktailsUseCase {
-        override fun getCocktails(): List<Cocktail> {
+        override suspend fun getCocktails(): List<Cocktail> {
             return repository.getCocktails()
         }
     }

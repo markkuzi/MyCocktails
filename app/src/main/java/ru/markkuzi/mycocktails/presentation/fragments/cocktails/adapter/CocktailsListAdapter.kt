@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.markkuzi.mycocktails.databinding.CocktailsItemBinding
 import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsListUi
-import ru.markkuzi.mycocktails.presentation.fragments.cocktails.ListItemUi
 
 class CocktailsListAdapter :
     ListAdapter<CocktailsListUi, CocktailsListAdapter.CocktailsViewHolder>(CocktailsItemDiffCallback()) {

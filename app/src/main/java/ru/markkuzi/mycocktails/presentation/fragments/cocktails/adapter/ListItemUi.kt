@@ -1,8 +1,9 @@
-package ru.markkuzi.mycocktails.presentation.fragments.cocktails
+package ru.markkuzi.mycocktails.presentation.fragments.cocktails.adapter
 
 import android.widget.ImageView
 import android.widget.TextView
 import ru.markkuzi.mycocktails.R
+import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsListUi
 
 class ListItemUi(
     private val tvName: TextView,

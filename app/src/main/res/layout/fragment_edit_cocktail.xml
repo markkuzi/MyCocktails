@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvAddPhoto"
+            android:layout_width="0dp"
+            android:layout_height="204dp"
+            android:layout_marginHorizontal="72dp"
+            android:layout_marginVertical="40dp"
+            android:backgroundTint="@color/add_photo_background"
+            app:cardCornerRadius="54dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add_photo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:boxCornerRadiusBottomEnd="34dp"
+            app:boxCornerRadiusBottomStart="34dp"
+            app:boxCornerRadiusTopEnd="34dp"
+            app:boxCornerRadiusTopStart="34dp"
+            app:layout_constraintTop_toBottomOf="@id/cvAddPhoto">
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/didact_gothic"
+                android:hint="@string/title_edit_text"
+                android:textColor="@color/color_edit_text"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/didact_gothic"
+            android:text="@string/add_title"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tilTitle"
+            app:layout_constraintTop_toBottomOf="@id/tilTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:boxCornerRadiusBottomEnd="34dp"
+            app:boxCornerRadiusBottomStart="34dp"
+            app:boxCornerRadiusTopEnd="34dp"
+            app:boxCornerRadiusTopStart="34dp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleLabel">
+
+            <EditText
+                android:id="@+id/etDescriptionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="154dp"
+                android:fontFamily="@font/didact_gothic"
+                android:hint="@string/description_edit_text"
+                android:textColor="@color/color_edit_text"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <TextView
+            android:id="@+id/tvDescriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/didact_gothic"
+            android:text="@string/optional_field"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tilDescription"
+            app:layout_constraintTop_toBottomOf="@id/tilDescription" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvDescriptionLabel"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddNewIngredient"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fab_background"
+            android:src="@drawable/ic_add_new_ingredients"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvIngredients"
+            android:tint="@color/white"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:boxCornerRadiusBottomEnd="34dp"
+            app:boxCornerRadiusBottomStart="34dp"
+            app:boxCornerRadiusTopEnd="34dp"
+            app:boxCornerRadiusTopStart="34dp"
+            app:layout_constraintTop_toBottomOf="@id/fabAddNewIngredient">
+
+            <EditText
+                android:id="@+id/etRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="154dp"
+                android:fontFamily="@font/didact_gothic"
+                android:hint="@string/recipe_edit_text"
+                android:textColor="@color/color_edit_text"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvRecipeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/didact_gothic"
+            android:text="@string/optional_field"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tilRecipe"
+            app:layout_constraintTop_toBottomOf="@id/tilRecipe" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/color_background_button_save"
+            android:fontFamily="@font/didact_gothic"
+            android:text="@string/save_button"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@id/tvRecipeLabel" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/didact_gothic"
+            android:text="@string/cancel_button"
+            android:textColor="@color/color_background_button_save"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@id/btnSave" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

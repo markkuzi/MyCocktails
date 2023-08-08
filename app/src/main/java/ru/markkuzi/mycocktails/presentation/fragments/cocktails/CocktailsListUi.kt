@@ -3,7 +3,7 @@ package ru.markkuzi.mycocktails.presentation.fragments.cocktails
 import ru.markkuzi.mycocktails.presentation.Mapper
 
 data class CocktailsListUi(
-    private val id: Int,
+    val id: Int,
     private val name: String,
     private val image: Int,
 ) : Mapper<Boolean, CocktailsListUi> {

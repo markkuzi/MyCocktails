@@ -1,11 +1,11 @@
 package ru.markkuzi.domain.entities
 
 data class Cocktail(
-    private val id: Int,
-    private val name: String,
-    private val description: String,
-    private val ingredients: String,
-    private val recipe: String,
+    val id: Int,
+    val name: String,
+    val description: String,
+    val ingredients: String,
+    val recipe: String,
 )  {
     interface Mapper<T> {
         fun map(

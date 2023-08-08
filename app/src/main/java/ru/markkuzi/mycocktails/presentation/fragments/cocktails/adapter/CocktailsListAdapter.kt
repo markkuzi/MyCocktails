@@ -10,6 +10,8 @@ import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsListUi
 class CocktailsListAdapter :
     ListAdapter<CocktailsListUi, CocktailsListAdapter.CocktailsViewHolder>(CocktailsItemDiffCallback()) {
 
+    var onCocktailItemClickListener: ((cocktail: CocktailsListUi) -> Unit)? = null
+
     inner class CocktailsViewHolder(
         val binding: CocktailsItemBinding,
     ) : RecyclerView.ViewHolder(binding.root)
@@ -29,6 +31,10 @@ class CocktailsListAdapter :
         with(holder.binding) {
             val mapper = ListItemUi(tvCocktailName, ivCocktailImage)
             cocktail.map(mapper)
+
+            root.setOnClickListener {
+                onCocktailItemClickListener?.invoke(cocktail)
+            }
         }
     }
 }

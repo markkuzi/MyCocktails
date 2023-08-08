@@ -38,7 +38,7 @@ class NewCocktailViewModel @Inject constructor(
                 0,
                 name = name,
                 description = description,
-                ingredients = listIngredients.joinToString { "\n-\n" },
+                ingredients = listIngredients.joinToString(separator = "\n      -\n") { it.name },
                 recipe = recipe,
             ))
             listIngredients.clear()

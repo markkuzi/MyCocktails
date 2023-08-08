@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import ru.markkuzi.mycocktails.R
 import ru.markkuzi.mycocktails.databinding.FragmentEditCocktailBinding
 
+@AndroidEntryPoint
 class NewCocktailFragment: Fragment(R.layout.fragment_edit_cocktail) {
 
     private val binding by viewBinding(FragmentEditCocktailBinding::bind)

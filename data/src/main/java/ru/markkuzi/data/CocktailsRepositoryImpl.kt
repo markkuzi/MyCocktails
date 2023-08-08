@@ -4,8 +4,9 @@ import ru.markkuzi.data.localDB.CocktailDao
 import ru.markkuzi.data.localDB.CocktailDbModel
 import ru.markkuzi.domain.CocktailsRepository
 import ru.markkuzi.domain.entities.Cocktail
+import javax.inject.Inject
 
-class CocktailRepositoryImpl(
+class CocktailsRepositoryImpl @Inject constructor(
     private val cocktailDao: CocktailDao,
     private val mapperToDomain: CocktailDbModel.Mapper<Cocktail>,
     private val mapperToData: Cocktail.Mapper<CocktailDbModel>,

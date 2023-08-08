@@ -5,10 +5,12 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import ru.markkuzi.mycocktails.R
 import ru.markkuzi.mycocktails.databinding.FragmentCocktailDetailsBinding
 
 
+@AndroidEntryPoint
 class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
 
     private val binding by viewBinding(FragmentCocktailDetailsBinding::bind)

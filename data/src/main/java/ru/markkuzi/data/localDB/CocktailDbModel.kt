@@ -14,7 +14,7 @@ data class CocktailDbModel(
     @ColumnInfo(name = "cocktailDescription")
     val description: String,
     @ColumnInfo(name = "cocktailIngredients")
-    val ingredients: List<String>,
+    val ingredients: String,
     @ColumnInfo(name = "cocktailRecipe")
     val recipe: String,
 ) {
@@ -23,7 +23,7 @@ data class CocktailDbModel(
             id: Int,
             name: String,
             description: String,
-            ingredients: List<String>,
+            ingredients: String,
             recipe: String,
         ): T
     }

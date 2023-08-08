@@ -4,7 +4,7 @@ data class Cocktail(
     private val id: Int,
     private val name: String,
     private val description: String,
-    private val ingredients: List<String>,
+    private val ingredients: String,
     private val recipe: String,
 )  {
     interface Mapper<T> {
@@ -12,7 +12,7 @@ data class Cocktail(
             id: Int,
             name: String,
             description: String,
-            ingredients: List<String>,
+            ingredients: String,
             recipe: String,
         ): T
     }

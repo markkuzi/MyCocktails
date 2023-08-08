@@ -8,8 +8,8 @@ class CocktailDbModelToDomain : CocktailDbModel.Mapper<Cocktail> {
         id: Int,
         name: String,
         description: String,
-        ingredients: List<String>,
-        recipe: String,
+        ingredients: String,
+        recipe: String
     ): Cocktail {
         return Cocktail(
             id = id,

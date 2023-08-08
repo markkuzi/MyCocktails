@@ -8,7 +8,7 @@ class CocktailDomainToData : Cocktail.Mapper<CocktailDbModel> {
         id: Int,
         name: String,
         description: String,
-        ingredients: List<String>,
+        ingredients: String,
         recipe: String,
     ): CocktailDbModel {
         return CocktailDbModel(

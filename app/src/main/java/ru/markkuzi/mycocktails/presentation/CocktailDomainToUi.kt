@@ -8,8 +8,8 @@ class CocktailDomainToUi : Cocktail.Mapper<CocktailsListUi> {
         id: Int,
         name: String,
         description: String,
-        ingredients: List<String>,
-        recipe: String,
+        ingredients: String,
+        recipe: String
     ): CocktailsListUi {
         return CocktailsListUi(
             id = id,

@@ -1,27 +1,32 @@
 package ru.markkuzi.data
 
 import ru.markkuzi.data.localDB.CocktailDao
+import ru.markkuzi.data.localDB.CocktailDbModel
 import ru.markkuzi.domain.CocktailsRepository
 import ru.markkuzi.domain.entities.Cocktail
 
-class CocktailRepositoryImpl(private val cocktailDao: CocktailDao) : CocktailsRepository {
-    override fun getCocktails(): List<Cocktail> {
-        return cocktailDao.getCocktails() //TODO add mapper
+class CocktailRepositoryImpl(
+    private val cocktailDao: CocktailDao,
+    private val mapperToDomain: CocktailDbModel.Mapper<Cocktail>,
+    private val mapperToData: Cocktail.Mapper<CocktailDbModel>,
+) : CocktailsRepository {
+    override suspend fun getCocktails(): List<Cocktail> {
+        return cocktailDao.getCocktails().map { it.map(mapperToDomain) }
     }
 
-    override fun getCocktailDetails(cocktailId: Int) { //TODO add fun in domain
-        cocktailDao.getCocktailDetails(cocktailId) //TODO add mapper
+    override suspend fun getCocktailDetails(cocktailId: Int): Cocktail {
+        return cocktailDao.getCocktailDetails(cocktailId).map(mapperToDomain)
     }
 
-    override fun createNewCocktail(cocktail: Cocktail) {
-        cocktailDao.insert(cocktail) //TODO add mapper
+    override suspend fun createNewCocktail(cocktail: Cocktail) {
+        cocktailDao.insert(cocktail.map(mapperToData))
     }
 
-    override fun editCocktail(cocktail: Cocktail) {
-        cocktailDao.insert(cocktail) //TODO add mapper
+    override suspend fun editCocktail(cocktail: Cocktail) {
+        cocktailDao.insert(cocktail.map(mapperToData))
     }
 
-    override fun deleteCocktailById(cocktailId: Int) {
-        cocktailDao.deleteCocktailById(cocktailId) //TODO add mapper
+    override suspend fun deleteCocktailById(cocktailId: Int) {
+        cocktailDao.deleteCocktailById(cocktailId)
     }
 }

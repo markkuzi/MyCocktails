@@ -8,13 +8,26 @@ import androidx.room.PrimaryKey
 data class CocktailDbModel(
     @PrimaryKey
     @ColumnInfo(name = "cocktailId")
-    val id:Int,
+    val id: Int,
     @ColumnInfo(name = "cocktailName")
-    val name:String,
+    val name: String,
     @ColumnInfo(name = "cocktailDescription")
-    val description:String,
+    val description: String,
     @ColumnInfo(name = "cocktailIngredients")
-    val ingredients:List<String>,
+    val ingredients: List<String>,
     @ColumnInfo(name = "cocktailRecipe")
-    val recipe:String,
-)
+    val recipe: String,
+) {
+    interface Mapper<T> {
+        fun map(
+            id: Int,
+            name: String,
+            description: String,
+            ingredients: List<String>,
+            recipe: String,
+        ): T
+    }
+
+    fun <T> map(mapper: Mapper<T>): T = mapper.map(id, name, description, ingredients, recipe)
+
+}

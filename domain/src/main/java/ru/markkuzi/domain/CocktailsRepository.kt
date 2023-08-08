@@ -4,13 +4,13 @@ import ru.markkuzi.domain.entities.Cocktail
 
 interface CocktailsRepository {
 
-    fun getCocktails(): List<Cocktail>
+    suspend fun getCocktails(): List<Cocktail>
 
-    fun getCocktailDetails(cocktailId: Int): Cocktail
+    suspend fun getCocktailDetails(cocktailId: Int): Cocktail
 
-    fun createNewCocktail(cocktail: Cocktail)
+    suspend fun createNewCocktail(cocktail: Cocktail)
 
-    fun editCocktail(cocktail: Cocktail)
+    suspend fun editCocktail(cocktail: Cocktail)
 
-    fun deleteCocktailById(cocktailId: Int)
+    suspend fun deleteCocktailById(cocktailId: Int)
 }

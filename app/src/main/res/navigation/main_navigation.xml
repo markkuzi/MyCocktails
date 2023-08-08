@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/cocktailsFragment">
+
+    <fragment
+        android:id="@+id/cocktailsFragment"
+        android:name="ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsFragment"
+        android:label="fragment_cocktails"
+        tools:layout="@layout/fragment_cocktails" >
+        <action
+            android:id="@+id/action_cocktailsFragment_to_cocktailDetailsFragment"
+            app:destination="@id/cocktailDetailsFragment" />
+        <action
+            android:id="@+id/action_cocktailsFragment_to_newCocktailFragment"
+            app:destination="@id/newCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editCocktailFragment"
+        android:name="ru.markkuzi.mycocktails.presentation.fragments.editcocktail.EditCocktailFragment"
+        android:label="fragment_edit_cocktail"
+        tools:layout="@layout/fragment_edit_cocktail" />
+    <fragment
+        android:id="@+id/cocktailDetailsFragment"
+        android:name="ru.markkuzi.mycocktails.presentation.fragments.cocktaildetails.CocktailDetailsFragment"
+        android:label="fragment_cocktail_details"
+        tools:layout="@layout/fragment_cocktail_details" >
+        <action
+            android:id="@+id/action_cocktailDetailsFragment_to_editCocktailFragment"
+            app:destination="@id/editCocktailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCocktailFragment"
+        android:name="ru.markkuzi.mycocktails.presentation.fragments.newcocktail.NewCocktailFragment"
+        android:label="NewCocktailFragment" />
+</navigation>

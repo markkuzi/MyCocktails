@@ -13,6 +13,9 @@ class NewCocktailFragment: Fragment(R.layout.fragment_edit_cocktail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.text.text = "NEW COCKTAIL"
+
     }
 
 }

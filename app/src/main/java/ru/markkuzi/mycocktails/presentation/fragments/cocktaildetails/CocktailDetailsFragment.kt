@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.markkuzi.mycocktails.R
 import ru.markkuzi.mycocktails.databinding.FragmentCocktailDetailsBinding
 import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsViewModel
+import ru.markkuzi.mycocktails.presentation.fragments.editcocktail.EditCocktailFragment
 
 
 @AndroidEntryPoint
@@ -34,6 +35,18 @@ class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
             binding.tvDescription.text = it.description
             binding.tvIngredients.text = it.ingredients
             binding.tvRecipe.text = it.recipe
+        }
+
+        binding.btnDelete.setOnClickListener {
+            viewModel.deleteCocktail(cocktailId)
+            findNavController().popBackStack()
+        }
+
+        binding.btnEdit.setOnClickListener {
+            val args = Bundle().apply {
+                putInt(EditCocktailFragment.KEY_EDIT, cocktailId)
+            }
+            findNavController().navigate(R.id.action_cocktailDetailsFragment_to_editCocktailFragment, args)
         }
 
     }

@@ -15,4 +15,5 @@
     <string name="add_ingredient_label">Add ingredient</string>
     <string name="add_button">Add</string>
     <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
 </resources>

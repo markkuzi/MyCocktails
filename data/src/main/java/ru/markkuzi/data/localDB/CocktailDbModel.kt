@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cocktails")
 data class CocktailDbModel(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "cocktailId")
     val id: Int,
     @ColumnInfo(name = "cocktailName")

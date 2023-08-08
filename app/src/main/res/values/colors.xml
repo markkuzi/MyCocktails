@@ -3,4 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="fab_background">#4B97FF</color>
+    <color name="add_photo_background">#EEEEEE</color>
+    <color name="color_edit_text">#313131</color>
+    <color name="color_background_button_save">#4B97FF</color>
+    <color name="color_text_ingredient">#313131</color>
 </resources>

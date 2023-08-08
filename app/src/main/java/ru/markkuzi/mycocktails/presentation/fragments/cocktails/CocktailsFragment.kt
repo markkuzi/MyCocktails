@@ -27,18 +27,17 @@ class CocktailsFragment : Fragment(R.layout.fragment_cocktails) {
         binding.rvCocktails.adapter = cocktailsAdapter
         binding.rvCocktails.layoutManager = GridLayoutManager(requireContext(),2)
 
+        viewModel.getCocktails()
 
-        val listCocktails = mutableListOf<CocktailsListUi>()
+        viewModel.cocktails.observe(viewLifecycleOwner) {
+            cocktailsAdapter.submitList(it)
+        }
 
         binding.fabAddNewCocktail.setOnClickListener{
             viewModel.navigate(findNavController())
         }
 
-        for (i in 1..10) {
-            listCocktails.add(CocktailsListUi(i, "Name$i", 0))
-        }
 
-        cocktailsAdapter.submitList(listCocktails)
 
     }
 

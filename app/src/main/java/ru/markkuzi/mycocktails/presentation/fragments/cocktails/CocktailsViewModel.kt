@@ -33,7 +33,7 @@ class CocktailsViewModel @Inject constructor(
     }
 
     fun navigate(navController: NavController) {
-        navController.navigate(R.id.action_cocktailsFragment_to_cocktailDetailsFragment)
+        navController.navigate(R.id.action_cocktailsFragment_to_newCocktailFragment)
     }
 
 }

@@ -1,7 +1,8 @@
-package ru.markkuzi.mycocktails
+package ru.markkuzi.mycocktails.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.markkuzi.mycocktails.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

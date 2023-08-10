@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:elevation="0dp"
     android:layout_margin="4dp"
-    app:cardCornerRadius="54dp">
+    app:cardCornerRadius="54dp"
+    app:strokeWidth="1dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvCocktailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Pink Lemonade"
         android:textSize="18sp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="4dp"
         android:textColor="@color/color_text_ingredient"
         android:fontFamily="@font/didact_gothic"
-        android:layout_gravity="bottom|center"/>
+        android:layout_gravity="center"/>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

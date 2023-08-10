@@ -36,4 +36,3 @@
 7. Получение данных из ViewModels через LiveData.
 
    
-[Посмотреть видео работающего приложения](https://youtu.be/PCXfvtw-XFQ)

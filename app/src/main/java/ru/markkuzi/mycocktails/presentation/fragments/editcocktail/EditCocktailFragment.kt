@@ -45,6 +45,10 @@ class EditCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
             findNavController().popBackStack()
         }
 
+        binding.btnCancel.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
 
     }
 

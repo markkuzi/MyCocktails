@@ -2,6 +2,7 @@ package ru.markkuzi.mycocktails.presentation.fragments.cocktaildetails
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -9,7 +10,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.markkuzi.mycocktails.R
 import ru.markkuzi.mycocktails.databinding.FragmentCocktailDetailsBinding
-import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsViewModel
 import ru.markkuzi.mycocktails.presentation.fragments.editcocktail.EditCocktailFragment
 
 
@@ -18,7 +18,7 @@ class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
 
     private val viewModel: CocktailDetailsViewModel by viewModels()
     private val binding by viewBinding(FragmentCocktailDetailsBinding::bind)
-    private var cocktailId : Int = 1
+    private var cocktailId: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +35,7 @@ class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
             binding.tvDescription.text = it.description
             binding.tvIngredients.text = it.ingredients
             binding.tvRecipe.text = it.recipe
+            binding.ivImage.setImageURI(it.imageUri.toUri())
         }
 
         binding.btnDelete.setOnClickListener {
@@ -46,7 +47,10 @@ class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
             val args = Bundle().apply {
                 putInt(EditCocktailFragment.KEY_EDIT, cocktailId)
             }
-            findNavController().navigate(R.id.action_cocktailDetailsFragment_to_editCocktailFragment, args)
+            findNavController().navigate(
+                R.id.action_cocktailDetailsFragment_to_editCocktailFragment,
+                args
+            )
         }
 
     }

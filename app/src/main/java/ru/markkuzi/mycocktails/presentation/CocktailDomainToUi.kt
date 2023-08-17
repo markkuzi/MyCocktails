@@ -9,12 +9,13 @@ class CocktailDomainToUi : Cocktail.Mapper<CocktailsListUi> {
         name: String,
         description: String,
         ingredients: String,
-        recipe: String
+        recipe: String,
+        imageUri: String
     ): CocktailsListUi {
         return CocktailsListUi(
             id = id,
             name = name,
-            image = 0,
+            imageUri = imageUri,
         )
     }
 }

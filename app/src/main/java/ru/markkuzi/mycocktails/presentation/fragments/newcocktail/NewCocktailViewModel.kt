@@ -1,5 +1,6 @@
 package ru.markkuzi.mycocktails.presentation.fragments.newcocktail
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewCocktailViewModel @Inject constructor(
-    private val addNewCocktailUseCase: CreateNewCocktailUseCase
+    private val addNewCocktailUseCase: CreateNewCocktailUseCase,
 ) : ViewModel() {
 
     private var _ingredients = MutableLiveData<List<Ingredient>>()
@@ -32,15 +33,18 @@ class NewCocktailViewModel @Inject constructor(
         }
     }
 
-    fun saveCocktail(name: String, description: String, recipe: String) {
+    fun saveCocktail(name: String, description: String, recipe: String, imageUri: Uri) {
         viewModelScope.launch {
-            addNewCocktailUseCase.createNewCocktail(Cocktail(
-                0,
-                name = name,
-                description = description,
-                ingredients = listIngredients.joinToString(separator = "\n      -\n") { it.name },
-                recipe = recipe,
-            ))
+            addNewCocktailUseCase.createNewCocktail(
+                Cocktail(
+                    0,
+                    name = name,
+                    description = description,
+                    ingredients = listIngredients.joinToString(separator = "\n      -\n") { it.name },
+                    recipe = recipe,
+                    imageUri = imageUri.toString(),
+                )
+            )
             listIngredients.clear()
         }
     }

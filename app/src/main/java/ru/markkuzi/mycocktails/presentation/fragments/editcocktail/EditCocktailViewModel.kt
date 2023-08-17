@@ -1,5 +1,6 @@
 package ru.markkuzi.mycocktails.presentation.fragments.editcocktail
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,6 @@ import kotlinx.coroutines.launch
 import ru.markkuzi.domain.entities.Cocktail
 import ru.markkuzi.domain.usecases.CreateNewCocktailUseCase
 import ru.markkuzi.domain.usecases.GetCocktailDetailsUseCase
-import ru.markkuzi.mycocktails.presentation.fragments.newcocktail.adapter.Ingredient
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,7 +32,7 @@ class EditCocktailViewModel @Inject constructor(
         }
     }
 
-    fun saveCocktail(id: Int, name: String, description: String, recipe: String) {
+    fun saveCocktail(id: Int, name: String, description: String, recipe: String, imageUri: Uri) {
         viewModelScope.launch {
             addNewCocktailUseCase.createNewCocktail(
                 Cocktail(
@@ -41,6 +41,7 @@ class EditCocktailViewModel @Inject constructor(
                     description = description,
                     ingredients = ingredientsFromCocktail,
                     recipe = recipe,
+                    imageUri = imageUri.toString(),
                 )
             )
         }

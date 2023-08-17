@@ -1,20 +1,23 @@
 package ru.markkuzi.mycocktails.presentation.fragments.cocktails.adapter
 
+import android.content.Context
+import android.net.Uri
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import ru.markkuzi.mycocktails.R
 import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsListUi
 
 class ListItemUi(
+    private val context: Context,
     private val tvName: TextView,
     private val ivImage: ImageView,
 ) : CocktailsListUi.Mapper<Unit> {
-    override fun map(id: Int, name: String, image: Int) {
+    override fun map(id: Int, name: String, imageUri: String) {
         tvName.text = name
-        val actualImage = if (image == 0)
-            R.drawable.cocktail_placeholder
+        if (imageUri.toUri() == Uri.EMPTY)
+            ivImage.setImageResource(R.drawable.cocktail_placeholder)
         else
-            image
-        ivImage.setImageResource(actualImage)
+            ivImage.setImageURI(imageUri.toUri())
     }
 }

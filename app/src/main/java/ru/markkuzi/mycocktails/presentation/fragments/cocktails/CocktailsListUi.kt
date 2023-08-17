@@ -5,13 +5,13 @@ import ru.markkuzi.mycocktails.presentation.Mapper
 data class CocktailsListUi(
     val id: Int,
     private val name: String,
-    private val image: Int,
+    private val imageUri: String,
 ) : Mapper<Boolean, CocktailsListUi> {
 
-    fun <T> map(mapper: Mapper<T>): T = mapper.map(id, name, image)
+    fun <T> map(mapper: Mapper<T>): T = mapper.map(id, name, imageUri)
 
     interface Mapper<T> {
-        fun map(id: Int, name: String, image: Int): T
+        fun map(id: Int, name: String, imageUri: String): T
     }
 
     override fun map(source: CocktailsListUi): Boolean {

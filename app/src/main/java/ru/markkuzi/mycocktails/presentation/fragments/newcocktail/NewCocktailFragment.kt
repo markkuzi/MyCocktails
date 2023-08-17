@@ -1,32 +1,28 @@
 package ru.markkuzi.mycocktails.presentation.fragments.newcocktail
 
-import android.app.Dialog
+import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
 import ru.markkuzi.mycocktails.R
 import ru.markkuzi.mycocktails.databinding.FragmentEditCocktailBinding
-import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsViewModel
-import ru.markkuzi.mycocktails.presentation.fragments.cocktails.adapter.CocktailsListAdapter
 import ru.markkuzi.mycocktails.presentation.fragments.newcocktail.adapter.IngredientsListAdapter
 
 @AndroidEntryPoint
-class NewCocktailFragment: Fragment(R.layout.fragment_edit_cocktail) {
+class NewCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
 
     private val viewModel: NewCocktailViewModel by viewModels()
     private val binding by viewBinding(FragmentEditCocktailBinding::bind)
     private val ingredientsAdapter by lazy { IngredientsListAdapter() }
+    private var imageUri = Uri.EMPTY
+    private val ingredientDialog by lazy { IngredientDialog(requireContext()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +31,11 @@ class NewCocktailFragment: Fragment(R.layout.fragment_edit_cocktail) {
 
 
         binding.fabAddNewIngredient.setOnClickListener {
-            showDishDialog()
+
+            ingredientDialog.show()
+            ingredientDialog.setOnDismissListener {
+                viewModel.addIngredient(ingredientDialog.getIngredient())
+            }
         }
 
         viewModel.ingredients.observe(viewLifecycleOwner) {
@@ -47,7 +47,7 @@ class NewCocktailFragment: Fragment(R.layout.fragment_edit_cocktail) {
             val name = binding.etTitle.text.toString()
             val description = binding.etDescriptionLabel.text.toString()
             val recipe = binding.etRecipe.text.toString()
-            viewModel.saveCocktail(name, description, recipe)
+            viewModel.saveCocktail(name, description, recipe, imageUri)
             findNavController().popBackStack()
         }
 
@@ -55,29 +55,29 @@ class NewCocktailFragment: Fragment(R.layout.fragment_edit_cocktail) {
             findNavController().popBackStack()
         }
 
+        binding.ivCocktailImage.setOnClickListener {
+            ImagePicker.with(requireActivity())
+                .cropSquare()
+                .createIntent {
+                    startForCocktailImageResult.launch(it)
+                }
+        }
     }
 
-    private fun showDishDialog() {
-        val dialog = Dialog(requireContext())
+    private val startForCocktailImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val resultCode = result.resultCode
+            val data = result.data
 
-        dialog.setContentView(layoutInflater.inflate(R.layout.add_ingrediets_dialog, null))
-        dialog.window?.setBackgroundDrawableResource(R.drawable.ingredients_background)
-        val editText: EditText = dialog.findViewById(R.id.etIngredient)
-        val addToIngredient: Button = dialog.findViewById(R.id.btnAddIngredient)
-        val closeDialog: Button = dialog.findViewById(R.id.btnCancelIngredient)
-        dialog.show()
-
-
-        addToIngredient.setOnClickListener {
-            val text = editText.text.toString()
-            viewModel.addIngredient(text)
-            dialog.hide()
+            if (resultCode == Activity.RESULT_OK) {
+                val fileUri = data?.data ?: Uri.EMPTY
+                imageUri = fileUri
+                binding.ivCocktailImage.setImageURI(fileUri)
+            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                imageUri = Uri.EMPTY
+            } else {
+                imageUri = Uri.EMPTY
+            }
         }
-
-        closeDialog.setOnClickListener {
-            dialog.hide()
-        }
-
-    }
 
 }

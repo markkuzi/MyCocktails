@@ -10,6 +10,7 @@ class CocktailDomainToData : Cocktail.Mapper<CocktailDbModel> {
         description: String,
         ingredients: String,
         recipe: String,
+        imageUri: String,
     ): CocktailDbModel {
         return CocktailDbModel(
             id = id,
@@ -17,6 +18,7 @@ class CocktailDomainToData : Cocktail.Mapper<CocktailDbModel> {
             description = description,
             ingredients = ingredients,
             recipe = recipe,
+            imageUri = imageUri,
         )
     }
 }

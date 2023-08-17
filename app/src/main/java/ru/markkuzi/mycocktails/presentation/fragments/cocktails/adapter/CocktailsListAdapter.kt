@@ -29,7 +29,7 @@ class CocktailsListAdapter :
         val cocktail = getItem(position)
 
         with(holder.binding) {
-            val mapper = ListItemUi(tvCocktailName, ivCocktailImage)
+            val mapper = ListItemUi(root.context, tvCocktailName, ivCocktailImage)
             cocktail.map(mapper)
 
             root.setOnClickListener {

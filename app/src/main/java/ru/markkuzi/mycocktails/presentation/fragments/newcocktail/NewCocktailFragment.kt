@@ -40,7 +40,6 @@ class NewCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
 
         viewModel.ingredients.observe(viewLifecycleOwner) {
             ingredientsAdapter.submitList(it)
-            ingredientsAdapter.notifyDataSetChanged()
         }
 
         binding.btnSave.setOnClickListener {

@@ -29,7 +29,7 @@ class NewCocktailViewModel @Inject constructor(
         if (ingredient.isNotEmpty()) {
             listIngredients.add(Ingredient(countIngredients, ingredient))
             countIngredients++
-            _ingredients.value = listIngredients
+            _ingredients.value = listIngredients.toList()
         }
     }
 
@@ -40,7 +40,7 @@ class NewCocktailViewModel @Inject constructor(
                     0,
                     name = name,
                     description = description,
-                    ingredients = listIngredients.joinToString(separator = "\n      -\n") { it.name },
+                    ingredients = listIngredients.map { it.name }.toList(),
                     recipe = recipe,
                     imageUri = imageUri.toString(),
                 )

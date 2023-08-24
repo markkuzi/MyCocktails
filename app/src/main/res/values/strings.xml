@@ -17,4 +17,5 @@
     <string name="edit_button">Edit</string>
     <string name="delete_button">Delete</string>
     <string name="add_new_cocktail">Add New Cocktail</string>
+    <string name="recipe_for_description">Recipe:</string>
 </resources>

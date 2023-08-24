@@ -1,16 +1,15 @@
-package ru.markkuzi.mycocktails.presentation
+package ru.markkuzi.mycocktails.presentation.fragments.cocktails
 
 import ru.markkuzi.domain.entities.Cocktail
-import ru.markkuzi.mycocktails.presentation.fragments.cocktails.CocktailsListUi
 
 class CocktailDomainToUi : Cocktail.Mapper<CocktailsListUi> {
     override fun map(
         id: Int,
         name: String,
         description: String,
-        ingredients: String,
+        ingredients: List<String>,
         recipe: String,
-        imageUri: String
+        imageUri: String,
     ): CocktailsListUi {
         return CocktailsListUi(
             id = id,

@@ -71,4 +71,6 @@ dependencies {
     //Image picker
     def image_picker_version = "2.1"
     implementation "com.github.dhaval2404:imagepicker:$image_picker_version"
+
+    implementation 'ru.surfstudio.android:easyadapter:7.0.1'
 }

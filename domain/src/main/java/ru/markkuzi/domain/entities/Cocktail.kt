@@ -4,7 +4,7 @@ data class Cocktail(
     val id: Int,
     val name: String,
     val description: String,
-    val ingredients: String,
+    val ingredients: List<String>,
     val recipe: String,
     val imageUri: String,
 ) {
@@ -13,7 +13,7 @@ data class Cocktail(
             id: Int,
             name: String,
             description: String,
-            ingredients: String,
+            ingredients: List<String>,
             recipe: String,
             imageUri: String,
         ): T

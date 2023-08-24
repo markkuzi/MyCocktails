@@ -8,7 +8,7 @@ class CocktailDomainToData : Cocktail.Mapper<CocktailDbModel> {
         id: Int,
         name: String,
         description: String,
-        ingredients: String,
+        ingredients: List<String>,
         recipe: String,
         imageUri: String,
     ): CocktailDbModel {
@@ -16,7 +16,7 @@ class CocktailDomainToData : Cocktail.Mapper<CocktailDbModel> {
             id = id,
             name = name,
             description = description,
-            ingredients = ingredients,
+            ingredients = ingredients.joinToString(separator = ","),
             recipe = recipe,
             imageUri = imageUri,
         )

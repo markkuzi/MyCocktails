@@ -28,7 +28,7 @@ class EditCocktailViewModel @Inject constructor(
         viewModelScope.launch {
             val cocktailDetails = getCocktailDetailsUseCase.getCocktailDetails(cocktailId)
             _cocktail.value = cocktailDetails
-            ingredientsFromCocktail = cocktailDetails.ingredients
+            ingredientsFromCocktail = cocktailDetails.ingredients.joinToString { "," }
         }
     }
 
@@ -39,7 +39,7 @@ class EditCocktailViewModel @Inject constructor(
                     id,
                     name = name,
                     description = description,
-                    ingredients = ingredientsFromCocktail,
+                    ingredients = ingredientsFromCocktail.split(","),
                     recipe = recipe,
                     imageUri = imageUri.toString(),
                 )

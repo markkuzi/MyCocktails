@@ -10,15 +10,15 @@ class CocktailDbModelToDomain : CocktailDbModel.Mapper<Cocktail> {
         description: String,
         ingredients: String,
         recipe: String,
-        image: String,
+        imageUri: String,
     ): Cocktail {
         return Cocktail(
             id = id,
             name = name,
             description = description,
-            ingredients = ingredients,
+            ingredients = ingredients.split(","),
             recipe = recipe,
-            imageUri = image,
+            imageUri = imageUri,
         )
     }
 }

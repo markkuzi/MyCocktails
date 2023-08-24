@@ -6,26 +6,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ru.markkuzi.domain.entities.Cocktail
 import ru.markkuzi.domain.usecases.DeleteCocktailByIdUseCase
 import ru.markkuzi.domain.usecases.GetCocktailDetailsUseCase
-import ru.markkuzi.mycocktails.presentation.fragments.newcocktail.adapter.Ingredient
+import ru.markkuzi.mycocktails.presentation.fragments.cocktaildetails.adapter.CocktailDetailsItemsCreator
+import ru.markkuzi.mycocktails.presentation.fragments.cocktaildetails.adapter.CocktailDetailsUiItem
 import javax.inject.Inject
 
 @HiltViewModel
 class CocktailDetailsViewModel @Inject constructor(
     private val getCocktailDetailsUseCase: GetCocktailDetailsUseCase,
     private val deleteCocktailByIdUseCase: DeleteCocktailByIdUseCase,
-): ViewModel() {
+    private val cocktailDetailsItemsCreator: CocktailDetailsItemsCreator,
+) : ViewModel() {
 
-    private var _ingredients = MutableLiveData<Cocktail>()
-    val ingredients: LiveData<Cocktail>
-        get() = _ingredients
+    private var _cocktailDetails = MutableLiveData<List<CocktailDetailsUiItem>>()
+    val cocktailDetails: LiveData<List<CocktailDetailsUiItem>>
+        get() = _cocktailDetails
 
     fun getCocktailDetails(cocktailId: Int) {
         viewModelScope.launch {
             val cocktail = getCocktailDetailsUseCase.getCocktailDetails(cocktailId)
-            _ingredients.value = cocktail
+            _cocktailDetails.value = cocktailDetailsItemsCreator.createUiItems(cocktail)
         }
     }
 

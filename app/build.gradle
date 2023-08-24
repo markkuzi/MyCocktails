@@ -53,7 +53,6 @@ dependencies {
     //viewBinding delegate
     def viewBindingDelegateVersion = "1.5.9"
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$viewBindingDelegateVersion"
-
     // Navigation component
     def nav_version = "2.6.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

@@ -22,7 +22,8 @@ class CocktailDetailsListView constructor(
     )
 
     init {
-        initRecycler()
+        binding.detailsCarouselRv.adapter = detailsAdapter
+        binding.detailsCarouselRv.layoutManager = LinearLayoutManager(context)
     }
 
     fun setup(details: List<String>) {
@@ -30,10 +31,4 @@ class CocktailDetailsListView constructor(
             .addAll(details, CocktailIngredientsController())
             .let { detailsAdapter.setItems(it) }
     }
-
-    private fun initRecycler() {
-        binding.detailsCarouselRv.adapter = detailsAdapter
-        binding.detailsCarouselRv.layoutManager = LinearLayoutManager(context)
-    }
-
 }

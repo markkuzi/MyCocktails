@@ -22,7 +22,6 @@ class NewCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
     private val binding by viewBinding(FragmentEditCocktailBinding::bind)
     private val ingredientsAdapter by lazy { IngredientsListAdapter() }
     private var imageUri = Uri.EMPTY
-    private val ingredientDialog by lazy { IngredientDialog(requireContext()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +31,7 @@ class NewCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
 
         binding.fabAddNewIngredient.setOnClickListener {
 
+            val ingredientDialog = IngredientDialog(requireContext())
             ingredientDialog.show()
             ingredientDialog.setOnDismissListener {
                 viewModel.addIngredient(ingredientDialog.getIngredient())

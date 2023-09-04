@@ -22,6 +22,7 @@ class IngredientDialog(context: Context) : Dialog(context), Ingredient {
         super.onCreate(savedInstanceState)
 
         this.setContentView(layoutInflater.inflate(R.layout.add_ingrediets_dialog, null))
+        this.window?.attributes?.windowAnimations = R.style.MyDialogAnimation
         this.window?.setBackgroundDrawableResource(R.drawable.ingredients_background)
         val editText: EditText = this.findViewById(R.id.etIngredient)
         val bottomButtons: BottomButtonsView = this.findViewById(R.id.bottomButtons)

@@ -12,7 +12,7 @@ class CocktailsController :
 
     var onCocktailItemClickListener: ((cocktail: CocktailsListUi) -> Unit)? = null
 
-    override fun getItemId(data: CocktailsListUi) = data.hashCode()
+    override fun getItemId(data: CocktailsListUi) = data.getId()
 
     override fun createViewHolder(parent: ViewGroup): Holder = Holder(parent)
 

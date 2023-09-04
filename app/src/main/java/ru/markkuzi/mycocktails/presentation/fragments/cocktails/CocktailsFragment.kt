@@ -44,7 +44,7 @@ class CocktailsFragment : Fragment(R.layout.fragment_cocktails) {
 
         cocktailsController.onCocktailItemClickListener = {
             val args = Bundle().apply {
-                putInt(CocktailDetailsFragment.KEY_DETAIL, it.id)
+                putInt(CocktailDetailsFragment.KEY_DETAIL, it.getId())
             }
             findNavController().navigate(
                 R.id.action_cocktailsFragment_to_cocktailDetailsFragment,

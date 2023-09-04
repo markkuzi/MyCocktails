@@ -75,12 +75,7 @@ class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
             easyAdapter.setItems(ItemList(uiItems))
         }
 
-        binding.btnDelete.setOnClickListener {
-            viewModel.deleteCocktail(cocktailId)
-            findNavController().popBackStack()
-        }
-
-        binding.btnEdit.setOnClickListener {
+        binding.bottomButtons.setOnPositiveButtonClickListener {
             val args = Bundle().apply {
                 putInt(EditCocktailFragment.KEY_EDIT, cocktailId)
             }
@@ -88,6 +83,11 @@ class CocktailDetailsFragment : Fragment(R.layout.fragment_cocktail_details) {
                 R.id.action_cocktailDetailsFragment_to_editCocktailFragment,
                 args
             )
+        }
+
+        binding.bottomButtons.setOnNegativeButtonClickListener {
+            viewModel.deleteCocktail(cocktailId)
+            findNavController().popBackStack()
         }
     }
 

@@ -39,6 +39,7 @@
         android:src="@drawable/ic_add_new"
         app:borderWidth="0dp"
         app:elevation="0dp"
+        android:stateListAnimator="@animator/click_view_anim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

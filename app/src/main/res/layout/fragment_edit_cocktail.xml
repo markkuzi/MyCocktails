@@ -119,6 +119,7 @@
             android:src="@drawable/ic_add_new_ingredients"
             app:borderWidth="0dp"
             app:elevation="0dp"
+            android:stateListAnimator="@animator/click_view_anim"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -159,33 +160,16 @@
             app:layout_constraintStart_toStartOf="@id/tilRecipe"
             app:layout_constraintTop_toBottomOf="@id/tilRecipe" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
+        <ru.markkuzi.mycocktails.presentation.customviews.BottomButtonsView
+            android:id="@+id/bottomButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/color_background_button_save"
-            android:fontFamily="@font/didact_gothic"
-            android:text="@string/save_button"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@id/tvRecipeLabel" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/didact_gothic"
-            android:text="@string/cancel_button"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/color_background_button_save"
-            android:textColor="@color/color_background_button_save"
-            android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@id/btnSave" />
+            android:paddingBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tvRecipeLabel"
+            app:bottomPositiveButtonText="@string/save_button"
+            app:bottomNegativeButtonText="@string/cancel_button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

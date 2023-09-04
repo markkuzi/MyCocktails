@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:elevation="0dp"
     android:layout_margin="4dp"
-    app:cardCornerRadius="54dp">
+    app:cardCornerRadius="54dp"
+    android:stateListAnimator="@animator/click_view_anim">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -3,9 +3,9 @@ package ru.markkuzi.mycocktails.presentation.fragments.newcocktail
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import ru.markkuzi.mycocktails.R
+import ru.markkuzi.mycocktails.presentation.customviews.BottomButtonsView
 
 
 interface Ingredient {
@@ -24,15 +24,14 @@ class IngredientDialog(context: Context) : Dialog(context), Ingredient {
         this.setContentView(layoutInflater.inflate(R.layout.add_ingrediets_dialog, null))
         this.window?.setBackgroundDrawableResource(R.drawable.ingredients_background)
         val editText: EditText = this.findViewById(R.id.etIngredient)
-        val addToIngredient: Button = this.findViewById(R.id.btnAddIngredient)
-        val closeDialog: Button = this.findViewById(R.id.btnCancelIngredient)
+        val bottomButtons: BottomButtonsView = this.findViewById(R.id.bottomButtons)
 
-        addToIngredient.setOnClickListener {
+        bottomButtons.setOnPositiveButtonClickListener {
             ingredient = editText.text.toString()
             this.dismiss()
         }
 
-        closeDialog.setOnClickListener {
+        bottomButtons.setOnNegativeButtonClickListener {
             this.dismiss()
         }
 

@@ -42,7 +42,7 @@ class NewCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
             ingredientsAdapter.submitList(it)
         }
 
-        binding.btnSave.setOnClickListener {
+        binding.bottomButtons.setOnPositiveButtonClickListener {
             val name = binding.etTitle.text.toString()
             val description = binding.etDescriptionLabel.text.toString()
             val recipe = binding.etRecipe.text.toString()
@@ -50,7 +50,7 @@ class NewCocktailFragment : Fragment(R.layout.fragment_edit_cocktail) {
             findNavController().popBackStack()
         }
 
-        binding.btnCancel.setOnClickListener {
+        binding.bottomButtons.setOnNegativeButtonClickListener {
             findNavController().popBackStack()
         }
 

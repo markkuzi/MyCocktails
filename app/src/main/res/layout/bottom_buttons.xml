@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPositive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_background_button_save"
+        android:fontFamily="@font/didact_gothic"
+        android:stateListAnimator="@animator/click_view_anim"
+        tools:text="@string/save_button"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNegative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/didact_gothic"
+        android:stateListAnimator="@animator/click_view_anim"
+        tools:text="@string/cancel_button"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/color_background_button_save"
+        android:textColor="@color/color_background_button_save"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/btnPositive" />
+
+</merge>
